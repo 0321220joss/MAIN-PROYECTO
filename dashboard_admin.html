@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Administrador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5 text-center">
+        <h2 id="bienvenida"></h2>
+        <p>Bienvenido al panel de administrador 👑</p>
+        <button onclick="cerrarSesion()" class="btn btn-danger mt-3">Cerrar sesión</button>
+    </div>
+
+    <script>
+    const user = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (!user || user.rol !== "admin") {
+      alert("Acceso no autorizado");
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("bienvenida").textContent = `Hola, ${user.nombre}`;
+    }
+
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioActivo");
+      window.location.href = "login.html";
+    }
+    </script>
+</body>
+</html>

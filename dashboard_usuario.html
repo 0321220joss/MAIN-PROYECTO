@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GrowMark</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" />
+
+    <!-- Google Fonts: Montserrat para títulos, Roboto para textos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Iconos e icon fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- CSS de librerías -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap y estilo personalizado -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Spinner (pantalla de carga) -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem"></div>
+    </div>
+
+    <!-- Topbar superior con nombre y usuario -->
+    <div class="container-fluid bg-primary text-white d-none d-lg-flex">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="index.html">
+                    <h2 class="text-white fw-bold m-0">GrowMark</h2>
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <span id="nombreUsuario">
+                        <a href="perfil.html" id="enlaceUsuario" class="text-white text-decoration-underline fw-bold"></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+            if (!usuarioActivo || !usuarioActivo.nombre) {
+                // Si no hay usuario activo, redirige a login
+                window.location.href = "login.html";
+                return;
+            }
+            // Mostrar nombre del usuario en el topbar
+            document.getElementById("enlaceUsuario").innerText = usuarioActivo.nombre;
+        });
+    </script>
+
+    <!-- Menú de navegación -->
+    <div class="container-fluid bg-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white p-lg-0">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <h1 class="fw-bold m-0">Proyecto</h1>
+                </a>
+                <button class="navbar-toggler me-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                        <a href="service.html" class="nav-item nav-link">Servicios</a>
+                        <a href="contact.html" class="nav-item nav-link">Contáctanos</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</body>
+
+</html>

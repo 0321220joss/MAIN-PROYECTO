@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Servicios de Instalación</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+
+    <!-- Topbar -->
+    <div class="container-fluid bg-primary text-white d-none d-lg-flex">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="index.html">
+                    <h2 class="text-white fw-bold m-0">Proyecto</h2>
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <span id="nombreUsuario">
+                        <a href="inicioperfil.html" id="enlaceUsuario" class="text-white text-decoration-underline fw-bold"></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+        if (usuarioActivo && usuarioActivo.nombre) {
+            document.getElementById("enlaceUsuario").innerText = usuarioActivo.nombre;
+        } else {
+            document.getElementById("nombreUsuario").style.display = "none";
+        }
+    </script>
+
+    <!-- Navbar -->
+    <div class="container-fluid bg-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white p-lg-0">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <h1 class="fw-bold m-0">Proyecto</h1>
+                </a>
+                <button class="navbar-toggler me-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                        <a href="service.html" class="nav-item nav-link">Servicios</a>
+                        <a href="contact.html" class="nav-item nav-link">Contáctanos</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <h1 class="text-success mb-4">🛠️ Servicios de Instalación para Computadoras</h1>
+
+        <div class="servicio-item" onclick="redirigir('Instalación de sistema operativo')">Instalación de sistema operativo (Windows, Linux, macOS).</div>
+        <div class="servicio-item" onclick="redirigir('Instalación de programas esenciales')">Instalación de programas esenciales (Office, antivirus, navegadores).</div>
+        <div class="servicio-item" onclick="redirigir('Instalación de impresoras y escáneres')">Instalación de impresoras y escáneres.</div>
+        <div class="servicio-item" onclick="redirigir('Instalación de RAM o discos duros')">Instalación de memorias RAM o discos duros adicionales.</div>
+        <div class="servicio-item" onclick="redirigir('Instalación y configuración de redes')">Instalación y configuración de redes inalámbricas y cableadas.</div>
+        <div class="servicio-item" onclick="redirigir('Instalación de tarjetas gráficas o de sonido')">Instalación de tarjetas gráficas o de sonido.</div>
+        <div class="servicio-item" onclick="redirigir('Instalación de drivers y actualizaciones')">Instalación de drivers y actualizaciones.</div>
+        <div class="servicio-item" onclick="redirigir('Configuración de respaldo automático')">Configuración de sistemas de respaldo automático.</div>
+        <div class="servicio-item" onclick="redirigir('Instalación de cámaras y periféricos')">Instalación de cámaras web, micrófonos y periféricos.</div>
+    </div>
+
+    <!-- Script para redirigir -->
+    <script>
+        function redirigir(servicio) {
+            const url = `programar-cita.html?servicio=${encodeURIComponent(servicio)}`;
+            window.location.href = url;
+        }
+    </script>
+    <!-- Footer -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <!-- Oficina -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Nuestra Oficina</h4>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-3">
+                        <a class="btn btn-square btn-light rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square btn-light rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-light rounded-circle me-2" href="#"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-light rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <!-- Enlaces -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Enlaces Rápidos</h4>
+                    <a class="btn btn-link" href="#">Sobre Nosotros</a>
+                    <a class="btn btn-link" href="#">Contáctanos</a>
+                    <a class="btn btn-link" href="#">Nuestros Servicios</a>
+                    <a class="btn btn-link" href="#">Términos y Condiciones</a>
+                    <a class="btn btn-link" href="#">Soporte</a>
+                </div>
+                <!-- Horarios -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Horario</h4>
+                    <p class="mb-1">Lunes - Viernes</p>
+                    <h6 class="text-light">09:00 am - 07:00 pm</h6>
+                    <p class="mb-1">Sábado</p>
+                    <h6 class="text-light">09:00 am - 12:00 pm</h6>
+                    <p class="mb-1">Domingo</p>
+                    <h6 class="text-light">Cerrado</h6>
+                </div>
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Boletín</h4>
+                    <p>Suscríbete para recibir nuestras novedades.</p>
+                    <div class="position-relative w-100">
+                        <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu correo electrónico">
+                        <button type="button" class="btn btn-light py-2 position-absolute top-0 end-0 mt-2 me-2">Suscribirse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Derechos -->
+    <div class="container-fluid copyright py-4 bg-secondary text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="fw-medium text-light" href="#">GrowMark</a>, Todos los derechos reservados.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Diseñado por <a class="fw-medium text-light" href="https://htmlcodex.com">HTML Codex</a> | Distribuido por <a class="fw-medium text-light" href="https://themewagon.com">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Subir -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- Aquí puedes seguir con el formulario de reseñas o más secciones -->
+    <!-- Scripts JS al final del body -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
