@@ -329,6 +329,13 @@
     bottom: -1.5rem;
 }
 
+/*** banner de servicios ***/
+.page-header {
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(../img/service-1.png) center center no-repeat;
+    background-size: cover;
+}
+
+
 
 /*** Project ***/
 .project-item {
@@ -821,4 +828,712 @@ form .form-label {
     text-align: center;
     max-width: 400px;
     width: 100%;
+}
+
+/* =================== Seccion de banners =================== */
+/* Botones Ver Más */
+.btn-ver-mas {
+    background-color: #007BFF;
+    color: white;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+    .btn-ver-mas:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+
+/* Imagenes adaptativas */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Carousel y banners mantienen altura fija */
+#carouselMain .carousel-inner,
+#carouselMain .carousel-item,
+#carouselMain img {
+    height: 400px !important;
+}
+
+.banners-secundarios .banner-secundario {
+    height: 32%; /* Para que 3 banners ocupen 96% + gaps */
+}
+
+/* Ajuste responsive básico */
+@media (max-width: 768px) {
+    .banners-principales {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #carouselMain {
+        width: 100% !important;
+        max-width: none !important;
+        height: 300px !important;
+    }
+
+    .banners-secundarios {
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        flex-direction: row !important;
+        gap: 10px !important;
+    }
+
+        .banners-secundarios .banner-secundario {
+            height: 150px !important;
+            flex-grow: 1 !important;
+        }
+}
+
+/* Carrusel Principal */
+#main-carousel {
+    width: 75%;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+    #main-carousel .carousel-inner {
+        height: 100%;
+    }
+
+    #main-carousel .carousel-item {
+        height: 100%;
+    }
+
+        #main-carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+            /* Ocultar botón para carousel-1.jpg y carousel-2.png */
+            /* CAMBIO */
+            #main-carousel .carousel-item img[src*="carousel-1.jpg"] ~ .btn,
+            #main-carousel .carousel-item img[src*="carousel-2.png"] ~ .btn {
+                display: none !important;
+            }
+
+    #main-carousel .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    #main-carousel .btn-primary {
+        background-color: #007BFF;
+        border: none;
+    }
+
+/* Banners Secundarios */
+.secondary-banners {
+    width: 25%;
+}
+
+.banner-box {
+    position: relative;
+    width: 100%;
+    height: 32%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+    .banner-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+        /* CAMBIO: mover botón a la derecha solo en ciertas imágenes */
+        .banner-box img[src*="laptops.png"] ~ .btn,
+        .banner-box img[src*="monitores.jpg"] ~ .btn,
+        .banner-box img[src*="tablets.jpg"] ~ .btn {
+            left: auto !important;
+            right: 10px !important;
+        }
+
+    /* Posición estándar del botón */
+    .banner-box .btn {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        padding: 5px 12px;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 5px;
+    }
+
+/* General Styles */
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto 2rem;
+    max-width: 1200px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 200%;
+}
+
+.product-card {
+    flex: 0 0 calc(100% / 6);
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+    .product-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+    .carousel-btn.left {
+        left: 0;
+    }
+
+    .carousel-btn.right {
+        right: 0;
+    }
+
+/* Banner */
+.pc-gaming-banner img {
+    width: 100%;
+    display: block;
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+
+/* Accesorios */
+.accesorios {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.accesorio-item {
+    width: calc(100% / 6 - 1rem);
+    text-align: center;
+}
+
+    .accesorio-item img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+/* Carrusel RENDIMIENTO EXTREMO */
+.carrusel-extremo {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.carrusel-extremo-inner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+    .slide.active {
+        display: block;
+    }
+
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+    .carrusel-btn.prev {
+        left: 20px;
+    }
+
+    .carrusel-btn.next {
+        right: 20px;
+    }
+
+/* Categorías */
+.categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 60px auto;
+    max-width: 1200px;
+}
+
+.categoria {
+    text-align: center;
+    width: 300px;
+}
+
+    .categoria img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .categoria h3 {
+        margin: 10px 0;
+    }
+
+.ver-mas-btn {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    transition: background-color 0.3s;
+}
+
+    .ver-mas-btn:hover {
+        background-color: #0056b3;
+    }
+
+/* Espacio en blanco */
+.espacio-blanco {
+    height: 150px;
+}
+
+
+
+
+
+/* =================== MÓDULO HU4: Soporte Flotante =================== */
+#soporte-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+#btn-soporte {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    #btn-soporte i {
+        font-size: 28px;
+    }
+
+#soporte-cuadro {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+}
+
+    #soporte-cuadro .titulo {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    #soporte-cuadro .btn-abrir-chat {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #25d366;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        #soporte-cuadro .btn-abrir-chat:hover {
+            background-color: #1ebe57;
+        }
+
+/* =================== Chatbot Flotante =================== */
+#chatbot-flotante {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    z-index: 1050;
+}
+
+#btn-chatbot {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    font-size: 28px; /* aumento a 28px para mejor tamaño del signo de pregunta */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    #btn-chatbot i {
+        font-size: 28px;
+    }
+
+#chatbot-cuadro {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 250px;
+    padding: 15px;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+    #chatbot-cuadro .titulo {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 16px;
+        text-align: center;
+    }
+
+.opciones-chatbot .btn-chat-opcion {
+    display: block;
+    width: 100%;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+    .opciones-chatbot .btn-chat-opcion:hover {
+        background-color: #0b5ed7;
+    }
+
+.oculto {
+    display: none;
+}
+
+}
+
+
+/* ====== Banner de Tiendas ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* ====== Banner de Tiendas ====== */
+.banner-tiendas {
+    background-color: #007bff; /* Azul */
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .banner-tiendas h1 {
+        color: white;
+        font-size: 3rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        text-align: center;
+    }
+
+/* ====== Tarjetas de tiendas ====== */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* ====== Botón azul ====== */
+.card .btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+    .card .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* ====== Sección ====== */
+section.container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* ====== Footer ====== */
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* Estilos para la página de tienda individual heredia */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado con imagen y texto */
+.header-tienda {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.img-tienda {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 64, 0.7);
+    text-align: center;
+    padding: 1rem;
+}
+
+.titulo-sucursal {
+    color: white;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Bloques de contenido */
+.contenido-tienda {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.bloque {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.sombra {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+.footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Enlaces */
+a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* ---------- Página Métodos de Pago ---------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+}
+
+.banner {
+    background-color: #0056b3; /* azul fuerte */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.titulo-blanco {
+    color: #ffffff;
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.contenido {
+    padding: 30px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.subtitulo {
+    color: #0056b3;
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+.restricciones {
+    margin-top: 60px; /* espacio extra */
+    margin-bottom: 60px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+footer.banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* ---------- Terminos y condiciones ---------- */
+/* Fondo blanco y texto negro por defecto */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
+}
+
+/* Franjas azul fuerte para header y footer */
+.banner {
+    background-color: #0056b3; /* azul fuerte */
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Títulos en blanco dentro de franjas azules */
+.titulo-blanco {
+    color: #ffffff;
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Contenido centrado con padding */
+.contenido {
+    padding: 30px 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify;
+    color: #000;
+}
+
+/* Subtítulos en azul fuerte y centrados */
+.subtitulo {
+    color: #0056b3;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Para el texto de restricciones o notas importantes (opcional) */
+.restricciones {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-style: italic;
+    text-align: center;
 }
