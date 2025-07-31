@@ -11,7 +11,7 @@ if (formRegistro) {
         };
         let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
         if (usuarios.some(u => u.correo === nuevoUsuario.correo)) {
-            alert("Este correo ya está registrado");
+            alert("Este correo ya estï¿½ registrado");
             return;
         }
         usuarios.push(nuevoUsuario);
@@ -41,7 +41,7 @@ if (formLogin) {
         if (usuarioEncontrado) {
             localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
             const destino = usuarioEncontrado.rol === "admin"
-                ? "dashboard_admin.html"
+                ? "index.html"
                 : "index.html";
             window.location.href = destino;
         } else {
