@@ -1,128 +1,73 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Programar Cita</title>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-    
+    <title>Compuniverso</title>
+    <link rel="icon" href="img/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+          rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+          rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Librerías CSS -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- CSS Bootstrap + estilo propio -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+   
 </head>
 <body>
 
-    <div class="container">
-        <h1 id="tituloServicio">Programar Cita</h1>
+   <div class="container mb-5">
+  <h2>Formulario para Programar Cita</h2>
+  <!-- Puedes hacerlo visible o usar type="hidden" si no quieres que el usuario lo edite -->
+<input type="text" id="servicio" value="Limpieza de Computadoras" readonly>
 
-        <form id="formCita">
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre completo:</label>
-                <input type="text" class="form-control" id="nombre" required />
-            </div>
-            <div class="mb-3">
-                <label for="correo" class="form-label">Correo electrónico:</label>
-                <input type="email" class="form-control" id="correo" required />
-            </div>
-            <div class="mb-3">
-                <label for="telefono" class="form-label">Teléfono:</label>
-                <input type="tel" class="form-control" id="telefono" required />
-            </div>
-            <div class="mb-3">
-                <label for="fecha" class="form-label">Fecha preferida:</label>
-                <input type="date" class="form-control" id="fecha" required />
-            </div>
-            <div class="mb-3">
-                <label for="hora" class="form-label">Hora preferida:</label>
-                <input type="time" class="form-control" id="hora" required />
-            </div>
+  <input type="text" id="nombre" placeholder="Nombre completo"><br>
+  <input type="email" id="correo" placeholder="Correo electrónico"><br>
+  <input type="tel" id="telefono" placeholder="Teléfono"><br>
+  <input type="date" id="fecha" placeholder="Fecha preferida"><br>
+  <input type="time" id="hora" placeholder="Hora preferida"><br>
+  <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea><br>
+  <button onclick="guardarCita()">Enviar solicitud</button>
 
-            <div class="mb-3">
-                <label for="mensaje" class="form-label">Comentarios adicionales:</label>
-                <textarea class="form-control" id="mensaje" rows="3"></textarea>
-            </div>
+  </div>
 
-            <button type="submit" class="btn btn-primary w-100">Enviar solicitud</button>
+  <script>
+    function guardarCita() {
+      const cita = {
+  nombre: document.getElementById("nombre").value,
+  correo: document.getElementById("correo").value,
+  telefono: document.getElementById("telefono").value,
+  fecha: document.getElementById("fecha").value,
+  hora: document.getElementById("hora").value,
+  comentarios: document.getElementById("comentarios").value,
+  servicio: document.getElementById("servicio").value
+};
 
-        </form>
-    </div>
 
-    <script>
-    // Al cargar la página, leemos el servicio desde el query param y lo ponemos en el hidden
-    const urlParams = new URLSearchParams(window.location.search);
-    const servicioSeleccionado = urlParams.get('servicio') || 'Servicio no especificado';
-    document.getElementById('servicio').value = servicioSeleccionado;
+      const citas = JSON.parse(localStorage.getItem("citasProgramadas")) || [];
+      citas.push(cita);
+      localStorage.setItem("citasProgramadas", JSON.stringify(citas));
 
-    const form = document.getElementById('form-cita');
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
-        const fecha = document.getElementById('fecha').value;
-        const servicio = document.getElementById('servicio').value;
-
-        const cita = { nombre, email, fecha, servicio, fechaCreacion: new Date().toISOString() };
-
-        // Obtener usuario activo (ejemplo)
-        const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
-        if (!usuarioActivo) {
-            alert('Debes iniciar sesión para programar una cita');
-            window.location.href = 'login.html';
-            return;
-        }
-
-        // Obtener historial previo o crear nuevo
-        const historialKey = `historialCitas_${usuarioActivo.email}`; // usar email para diferenciar usuarios
-        let historial = JSON.parse(localStorage.getItem(historialKey)) || [];
-
-        // Agregar cita nueva
-        historial.push(cita);
-
-        // Guardar historial actualizado
-        localStorage.setItem(historialKey, JSON.stringify(historial));
-
-        alert('Cita programada con éxito para ' + servicio);
-
-        // Opcional: redirigir al perfil o limpiar form
-        window.location.href = 'perfil.html';
-    });
-</script>
-    <script>
-    // Obtener el parámetro servicio de la URL
-    function obtenerParametro(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
+      alert("Cita guardada exitosamente.");
     }
-
-    // Mostrar el servicio en el título
-    const servicioSeleccionado = obtenerParametro('servicio');
-    const titulo = document.getElementById('tituloServicio');
-    if (servicioSeleccionado) {
-        titulo.textContent = `Programar cita para: ${decodeURIComponent(servicioSeleccionado)}`;
-    }
-
-    // Manejar el envío del formulario
-    document.getElementById('formCita').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Capturar datos del formulario
-        const datos = {
-            servicio: servicioSeleccionado,
-            nombre: document.getElementById('nombre').value.trim(),
-            correo: document.getElementById('correo').value.trim(),
-            telefono: document.getElementById('telefono').value.trim(),
-            fecha: document.getElementById('fecha').value,
-            hora: document.getElementById('hora').value,
-            mensaje: document.getElementById('mensaje').value.trim()
-        };
-
-        // Aquí puedes agregar código para enviar datos a servidor o almacenarlos
-
-        alert(`Gracias, ${datos.nombre}. Tu cita para "${decodeURIComponent(datos.servicio)}" ha sido solicitada.`);
-
-        // Opcional: resetear formulario
-        this.reset();
-    });
-    </script>
-
+  </script>
 </body>
 </html>
