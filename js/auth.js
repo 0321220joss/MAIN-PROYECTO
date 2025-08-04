@@ -41,7 +41,7 @@ if (formLogin) {
         if (usuarioEncontrado) {
             localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
             const destino = usuarioEncontrado.rol === "admin"
-                ? "dashboard_admin.html"
+                ? "ListaPerfiles.html"
                 : "index.html";
             window.location.href = destino;
         } else {
