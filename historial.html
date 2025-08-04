@@ -1,75 +1,97 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Historial de Citas</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Compuniverso</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Historial de Citas - Compuniverso</title>
     <link rel="icon" href="img/favicon.ico" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
-          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
     <!-- Iconos -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-          rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-          rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-          rel="stylesheet" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-    <!-- Librerías CSS -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-
-    <!-- CSS Bootstrap + estilo propio -->
+    <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-  
 </head>
 <body>
-    <div class="container mb-5">
-  <h2>📋 Historial de Citas Programadas</h2>
-  <table border="1" id="tablaHistorial">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Teléfono</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Servicio</th>
-        <th>Comentarios</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const citas = JSON.parse(localStorage.getItem("citasProgramadas")) || [];
-      const tbody = document.querySelector("#tablaHistorial tbody");
+    <!-- Topbar y Navbar omitidos para simplicidad -->
 
-      citas.forEach(cita => {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
-          <td>${cita.nombre}</td>
-          <td>${cita.correo}</td>
-          <td>${cita.telefono}</td>
-          <td>${cita.fecha}</td>
-          <td>${cita.hora}</td>
-          <td>${cita.servicio}</td>
-          <td>${cita.comentarios}</td>
-        `;
-        tbody.appendChild(fila);
-      });
-    });
-  </script>
+    <div class="container my-5">
+        <h2 class="historial-titulo text-center mb-4">
+            <i class="fas fa-clipboard-list"></i> Historial de Citas Programadas
+        </h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Servicio</th>
+                        <th>Comentarios</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-citas-body">
+                    <!-- Rellenado por JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-compuniverso text-white text-center">
+        © 2025 <strong>Compuniverso</strong>. Todos los derechos reservados.
+    </footer>
+
+    <!-- Script para mostrar y eliminar citas -->
+    <script>
+        function cargarCitas() {
+            const citas = JSON.parse(localStorage.getItem("citasProgramadas")) || [];
+            const tbody = document.getElementById("tabla-citas-body");
+            tbody.innerHTML = ""; // Limpiar contenido anterior
+
+            citas.forEach((cita, index) => {
+                const fila = document.createElement("tr");
+
+                fila.innerHTML = `
+                        <td>${cita.nombre}</td>
+                        <td>${cita.correo}</td>
+                        <td>${cita.telefono}</td>
+                        <td>${cita.fecha}</td>
+                        <td>${cita.hora}</td>
+                        <td>${cita.servicio}</td>
+                        <td>${cita.comentarios}</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" onclick="eliminarCita(${index})">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+                        </td>
+                    `;
+
+                tbody.appendChild(fila);
+            });
+        }
+
+        function eliminarCita(indice) {
+            const citas = JSON.parse(localStorage.getItem("citasProgramadas")) || [];
+            if (confirm("¿Estás seguro de que deseas eliminar esta cita?")) {
+                citas.splice(indice, 1);
+                localStorage.setItem("citasProgramadas", JSON.stringify(citas));
+                cargarCitas();
+            }
+        }
+
+        // Cargar citas al iniciar
+        document.addEventListener("DOMContentLoaded", cargarCitas);
+    </script>
 </body>
 </html>

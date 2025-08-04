@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-  
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Compuniverso</title>
     <link rel="icon" href="img/favicon.ico" />
@@ -31,43 +31,124 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
    
+
+
 </head>
 <body>
+    <!-- Topbar -->
+    <div class="container-fluid bg-primary text-white d-none d-lg-flex">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="index.html">
+                    <h2 class="text-white fw-bold m-0">Compuniverso</h2>
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <span id="nombreUsuario" class="d-flex align-items-center gap-2">
+                        <a href="inicioperfil.html"
+                           id="enlaceUsuario"
+                           class="text-white text-decoration-underline fw-bold"></a>
+                        <i class="fas fa-user-circle text-white" style="font-size: 1.3rem"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+        if (usuarioActivo && usuarioActivo.nombre) {
+            document.getElementById("enlaceUsuario").innerText = usuarioActivo.nombre;
+        } else {
+            document.getElementById("nombreUsuario").style.display = "none";
+        }
+    </script>
+    <!-- Navbar -->
+    <div class="container-fluid bg-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white p-lg-0">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <h1 class="fw-bold m-0">Compuniverso</h1>
+                </a>
+                <button class="navbar-toggler me-0"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                        <a href="service.html" class="nav-item nav-link">Servicios</a>
+                        <a href="about.html" class="nav-item nav-link">Productos</a>
+                        <a href="sugerencias.html" class="nav-item nav-link">Sugerencias</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
 
-   <div class="container mb-5">
-  <h2>Formulario para Programar Cita</h2>
-  <!-- Puedes hacerlo visible o usar type="hidden" si no quieres que el usuario lo edite -->
-<input type="text" id="servicio" value="Limpieza de Computadoras" readonly>
-
-  <input type="text" id="nombre" placeholder="Nombre completo"><br>
-  <input type="email" id="correo" placeholder="Correo electrónico"><br>
-  <input type="tel" id="telefono" placeholder="Teléfono"><br>
-  <input type="date" id="fecha" placeholder="Fecha preferida"><br>
-  <input type="time" id="hora" placeholder="Hora preferida"><br>
-  <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea><br>
-  <button onclick="guardarCita()">Enviar solicitud</button>
-
-  </div>
-
-  <script>
-    function guardarCita() {
-      const cita = {
-  nombre: document.getElementById("nombre").value,
-  correo: document.getElementById("correo").value,
-  telefono: document.getElementById("telefono").value,
-  fecha: document.getElementById("fecha").value,
-  hora: document.getElementById("hora").value,
-  comentarios: document.getElementById("comentarios").value,
-  servicio: document.getElementById("servicio").value
-};
+    <div class="container mb-5">
+        <h2>Formulario para Programar Cita</h2>
+        <!-- Puedes hacerlo visible o usar type="hidden" si no quieres que el usuario lo edite -->
+        <input type="text" id="servicio" readonly>
 
 
-      const citas = JSON.parse(localStorage.getItem("citasProgramadas")) || [];
-      citas.push(cita);
-      localStorage.setItem("citasProgramadas", JSON.stringify(citas));
+        <input type="text" id="nombre" placeholder="Nombre completo"><br>
+        <input type="email" id="correo" placeholder="Correo electrónico"><br>
+        <input type="tel" id="telefono" placeholder="Teléfono"><br>
+        <input type="date" id="fecha" placeholder="Fecha preferida"><br>
+        <input type="time" id="hora" placeholder="Hora preferida"><br>
+        <textarea id="comentarios" placeholder="Comentarios adicionales"></textarea><br>
+        <button onclick="guardarCita()">Enviar solicitud</button>
 
-      alert("Cita guardada exitosamente.");
-    }
-  </script>
+    </div>
+
+    <script>
+        function guardarCita() {
+            const cita = {
+                nombre: document.getElementById("nombre").value,
+                correo: document.getElementById("correo").value,
+                telefono: document.getElementById("telefono").value,
+                fecha: document.getElementById("fecha").value,
+                hora: document.getElementById("hora").value,
+                comentarios: document.getElementById("comentarios").value,
+                servicio: document.getElementById("servicio").value
+            };
+
+            const citas = JSON.parse(localStorage.getItem("citasProgramadas")) || [];
+            citas.push(cita);
+            localStorage.setItem("citasProgramadas", JSON.stringify(citas));
+
+            alert("Cita guardada exitosamente.");
+        }
+
+    </script>
+    <script>
+        // Leer el parámetro "servicio" de la URL
+        function obtenerParametro(nombre) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(nombre);
+        }
+
+        // Establecer el servicio en el input
+        window.addEventListener('DOMContentLoaded', () => {
+            const servicio = obtenerParametro("servicio");
+            if (servicio) {
+                document.getElementById("servicio").value = servicio;
+            } else {
+                document.getElementById("servicio").value = "Servicio no especificado";
+            }
+        });
+    </script>
+
+
+    <!-- Footer -->
+    <div class="container-fluid footer-simple">
+        © 2025 Compuniverso. Todos los derechos reservados.
+    </div>
+
+    <!-- Botón Subir -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 </body>
 </html>

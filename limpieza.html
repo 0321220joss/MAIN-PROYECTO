@@ -1,6 +1,35 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compuniverso</title>
+    <link rel="icon" href="img/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+          rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+          rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Librerías CSS -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- CSS Bootstrap + estilo propio -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
     <meta charset="UTF-8">
     <title>Servicios de Limpieza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +37,16 @@
     <!-- Estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
     <!-- Spinner -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    <div id="spinner"
+         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary"
+             role="status"
+             style="width: 3rem; height: 3rem"></div>
     </div>
 
     <!-- Topbar -->
@@ -22,11 +54,14 @@
         <div class="container py-3">
             <div class="d-flex align-items-center">
                 <a href="index.html">
-                    <h2 class="text-white fw-bold m-0">Proyecto</h2>
+                    <h2 class="text-white fw-bold m-0">Compuniverso</h2>
                 </a>
                 <div class="ms-auto d-flex align-items-center">
-                    <span id="nombreUsuario">
-                        <a href="inicioperfil.html" id="enlaceUsuario" class="text-white text-decoration-underline fw-bold"></a>
+                    <span id="nombreUsuario" class="d-flex align-items-center gap-2">
+                        <a href="inicioperfil.html"
+                           id="enlaceUsuario"
+                           class="text-white text-decoration-underline fw-bold"></a>
+                        <i class="fas fa-user-circle text-white" style="font-size: 1.3rem"></i>
                     </span>
                 </div>
             </div>
@@ -47,30 +82,26 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-white p-lg-0">
                 <a href="index.html" class="navbar-brand d-lg-none">
-                    <h1 class="fw-bold m-0">Proyecto</h1>
+                    <h1 class="fw-bold m-0">Compuniverso</h1>
                 </a>
-                <button class="navbar-toggler me-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <button class="navbar-toggler me-0"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
                         <a href="index.html" class="nav-item nav-link active">Inicio</a>
                         <a href="service.html" class="nav-item nav-link">Servicios</a>
-                        <a href="contact.html" class="nav-item nav-link">Contáctanos</a>
+                        <a href="about.html" class="nav-item nav-link">Productos</a>
+                        <a href="sugerencias.html" class="nav-item nav-link">Sugerencias</a>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-<div class="container text-center py-5">
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                    <li class="breadcrumb-item text-primary" aria-current="page">Servicios de Limpieza</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+
     <div class="container py-5">
         <h1 class="text-primary mb-4">🧼 Servicios de Limpieza para Computadoras</h1>
 
@@ -94,14 +125,15 @@
     </script>
     <!-- Footer -->
     <div class="container-fluid footer-simple">
-    © 2025 Compuniverso. Todos los derechos reservados.
-</div>
+        © 2025 Compuniverso. Todos los derechos reservados.
+    </div>
 
-   
+
 
     <!-- Botón Subir -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 
     <!-- Aquí puedes seguir con el formulario de reseñas o más secciones -->
     <!-- Scripts JS al final del body -->
