@@ -17,41 +17,98 @@
     <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+    <link href="css/formulario-cita.css" rel="stylesheet" />
+
 </head>
 <body>
-    <!-- Topbar y Navbar omitidos para simplicidad -->
-
-    <div class="container my-5">
-        <h2 class="historial-titulo text-center mb-4">
-            <i class="fas fa-clipboard-list"></i> Historial de Citas Programadas
-        </h2>
-
-        <div class="table-responsive">
-            <table class="table table-bordered text-center align-middle">
-                <thead class="table-primary">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Teléfono</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Servicio</th>
-                        <th>Comentarios</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-citas-body">
-                    <!-- Rellenado por JavaScript -->
-                </tbody>
-            </table>
+    <!-- Topbar -->
+    <div class="container-fluid bg-primary text-white d-none d-lg-flex">
+        <div class="container py-3">
+            <div class="d-flex align-items-center">
+                <a href="index.html">
+                    <h2 class="text-white fw-bold m-0">Compuniverso</h2>
+                </a>
+                <div class="ms-auto d-flex align-items-center">
+                    <span id="nombreUsuario" class="d-flex align-items-center gap-2">
+                        <a href="inicioperfil.html"
+                           id="enlaceUsuario"
+                           class="text-white text-decoration-underline fw-bold"></a>
+                        <i class="fas fa-user-circle text-white" style="font-size: 1.3rem"></i>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer-compuniverso text-white text-center">
-        © 2025 <strong>Compuniverso</strong>. Todos los derechos reservados.
-    </footer>
+    <script>
+        const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+        if (usuarioActivo && usuarioActivo.nombre) {
+            document.getElementById("enlaceUsuario").innerText = usuarioActivo.nombre;
+        } else {
+            document.getElementById("nombreUsuario").style.display = "none";
+        }
+    </script>
 
+    <!-- Navbar -->
+    <div class="container-fluid bg-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white p-lg-0">
+                <a href="index.html" class="navbar-brand d-lg-none">
+                    <h1 class="fw-bold m-0">Compuniverso</h1>
+                </a>
+                <button class="navbar-toggler me-0"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                        <a href="service.html" class="nav-item nav-link">Servicios</a>
+                        <a href="about.html" class="nav-item nav-link">Productos</a>
+                        <a href="sugerencias.html" class="nav-item nav-link">Sugerencias</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <!-- Botón Subir -->
+    <a href="#" class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-circle shadow" style="z-index: 999;">
+        ↑
+    </a>
+    <div class="page-wrapper">
+        <!-- Topbar y Navbar omitidos para simplicidad -->
+
+        <div class="container my-5">
+            <h2 class="historial-titulo text-center mb-4">
+                <i class="fas fa-clipboard-list"></i> Historial de Citas Programadas
+            </h2>
+
+            <div class="table-responsive">
+                <table class="table table-bordered text-center align-middle">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Teléfono</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Servicio</th>
+                            <th>Comentarios</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-citas-body">
+                        <!-- Rellenado por JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
     <!-- Script para mostrar y eliminar citas -->
     <script>
         function cargarCitas() {
@@ -63,19 +120,19 @@
                 const fila = document.createElement("tr");
 
                 fila.innerHTML = `
-                        <td>${cita.nombre}</td>
-                        <td>${cita.correo}</td>
-                        <td>${cita.telefono}</td>
-                        <td>${cita.fecha}</td>
-                        <td>${cita.hora}</td>
-                        <td>${cita.servicio}</td>
-                        <td>${cita.comentarios}</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm" onclick="eliminarCita(${index})">
-                                <i class="fas fa-trash-alt"></i> Eliminar
-                            </button>
-                        </td>
-                    `;
+                                        <td>${cita.nombre}</td>
+                                        <td>${cita.correo}</td>
+                                        <td>${cita.telefono}</td>
+                                        <td>${cita.fecha}</td>
+                                        <td>${cita.hora}</td>
+                                        <td>${cita.servicio}</td>
+                                        <td>${cita.comentarios}</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm" onclick="eliminarCita(${index})">
+                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                            </button>
+                                        </td>
+                                    `;
 
                 tbody.appendChild(fila);
             });
@@ -93,5 +150,9 @@
         // Cargar citas al iniciar
         document.addEventListener("DOMContentLoaded", cargarCitas);
     </script>
+
+    <footer class="footer-simple">
+        © 2025 Compuniverso. Todos los derechos reservados.
+    </footer>
 </body>
 </html>

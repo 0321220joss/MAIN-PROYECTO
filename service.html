@@ -60,11 +60,14 @@
         <div class="container py-3">
             <div class="d-flex align-items-center">
                 <a href="index.html">
-                    <h2 class="text-white fw-bold m-0">Proyecto</h2>
+                    <h2 class="text-white fw-bold m-0">Compuniverso</h2>
                 </a>
                 <div class="ms-auto d-flex align-items-center">
-                    <span id="nombreUsuario">
-                        <a href="inicioperfil.html" id="enlaceUsuario" class="text-white text-decoration-underline fw-bold"></a>
+                    <span id="nombreUsuario" class="d-flex align-items-center gap-2">
+                        <a href="inicioperfil.html"
+                           id="enlaceUsuario"
+                           class="text-white text-decoration-underline fw-bold"></a>
+                        <i class="fas fa-user-circle text-white" style="font-size: 1.3rem"></i>
                     </span>
                 </div>
             </div>
@@ -94,7 +97,8 @@
                     <div class="navbar-nav">
                         <a href="index.html" class="nav-item nav-link active">Inicio</a>
                         <a href="service.html" class="nav-item nav-link">Servicios</a>
-                        <a href="contact.html" class="nav-item nav-link">Contáctanos</a>
+                        <a href="about.html" class="nav-item nav-link">Productos</a>
+                        <a href="sugerencias.html" class="nav-item nav-link">Sugerencias</a>
                     </div>
                 </div>
             </nav>
@@ -159,8 +163,9 @@
    
 
     <!-- Botón Subir -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
+    <a href="#" class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-circle shadow" style="z-index: 999;">
+        ↑
+    </a>
     <!-- Scripts -->
     <script>
         const select = document.getElementById("categoria");
