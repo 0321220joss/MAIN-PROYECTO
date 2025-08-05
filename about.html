@@ -3,44 +3,76 @@
 <head>
     <meta charset="UTF-8" />
     <title>Catálogo de Productos</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+    <!-- Encabezado -->
     <header class="banner">
         <h1 class="titulo-blanco">Catálogo de Productos</h1>
     </header>
 
+    <!-- Controles de búsqueda y orden -->
+    <section class="busqueda-container">
+        <input type="text" id="buscarInput" placeholder="Buscar producto..." />
+        <button onclick="ordenarAZ()">A-Z</button>
+        <button onclick="ordenarZA()">Z-A</button>
+    </section>
+
+    <!-- Contenido principal -->
     <main class="contenido">
-
-        <!-- Barra de búsqueda y botones de orden -->
-        <div class="busqueda-container">
-            <input type="text" id="buscarInput" placeholder="Buscar producto..." />
-            <button onclick="ordenarAZ()">A-Z</button>
-            <button onclick="ordenarZA()">Z-A</button>
-        </div>
-
-        <!-- Lista de productos -->
         <div class="productos" id="listaProductos">
-            <div class="producto"><h4>Tarjeta Gráfica NVIDIA RTX 3060</h4></div>
-            <div class="producto"><h4>Procesador AMD Ryzen 5 5600X</h4></div>
-            <div class="producto"><h4>Memoria RAM Corsair 16GB DDR4</h4></div>
-            <div class="producto"><h4>SSD Samsung 970 EVO 1TB</h4></div>
-            <div class="producto"><h4>Placa Madre ASUS B550M</h4></div>
-            <div class="producto"><h4>Fuente de Poder EVGA 650W</h4></div>
-        </div>
 
+            <!-- Ejemplo de producto -->
+            <div class="producto">
+                <img src="img/tarjeta-grafica-rtx3060.jpg" alt="Tarjeta Gráfica NVIDIA RTX 3060" />
+                <h4>Tarjeta Gráfica NVIDIA RTX 3060</h4>
+                <a href="producto-rtx3060.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/procesador-ryzen5-5600x.jpg" alt="Procesador AMD Ryzen 5 5600X" />
+                <h4>Procesador AMD Ryzen 5 5600X</h4>
+                <a href="producto-ryzen5.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/memoria-ram-corsair-16gb.jpg" alt="Memoria RAM Corsair 16GB DDR4" />
+                <h4>Memoria RAM Corsair 16GB DDR4</h4>
+                <a href="producto-ram16.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/ssd-samsung-970evo-1tb.jpg" alt="SSD Samsung 970 EVO 1TB" />
+                <h4>SSD Samsung 970 EVO 1TB</h4>
+                <a href="producto-ssd1tb.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/placa-madre-asus-b550m.jpg" alt="Placa Madre ASUS B550M" />
+                <h4>Placa Madre ASUS B550M</h4>
+                <a href="producto-b550m.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/fuente-poder-evga-650w.jpg" alt="Fuente de Poder EVGA 650W" />
+                <h4>Fuente de Poder EVGA 650W</h4>
+                <a href="producto-fuente650w.html" class="btn-info">Más información</a>
+            </div>
+
+        </div>
     </main>
 
-    <footer class="banner">
-        <p class="titulo-blanco">@2025 Compuniverso. Todos los derechos reservados</p>
+    <!-- Footer -->
+    <footer class="footer-simple">
+        © 2025 Compuniverso. Todos los derechos reservados
     </footer>
 
+    <!-- JS búsqueda y orden -->
     <script>
         const buscarInput = document.getElementById('buscarInput');
         const listaProductos = document.getElementById('listaProductos');
         let productos = Array.from(listaProductos.children);
 
-        // Filtrar productos en tiempo real
         buscarInput.addEventListener('keyup', () => {
             const filtro = buscarInput.value.toLowerCase();
             let coincidencias = 0;
@@ -55,7 +87,6 @@
                 }
             });
 
-            // Mostrar mensaje si no hay coincidencias
             if (coincidencias === 0) {
                 if (!document.getElementById('mensajeNoEncontrado')) {
                     const mensaje = document.createElement('p');
@@ -71,13 +102,11 @@
             }
         });
 
-        // Ordenar A-Z
         function ordenarAZ() {
             productos.sort((a, b) => a.textContent.localeCompare(b.textContent));
             productos.forEach(p => listaProductos.appendChild(p));
         }
 
-        // Ordenar Z-A
         function ordenarZA() {
             productos.sort((a, b) => b.textContent.localeCompare(a.textContent));
             productos.forEach(p => listaProductos.appendChild(p));
@@ -85,3 +114,4 @@
     </script>
 </body>
 </html>
+

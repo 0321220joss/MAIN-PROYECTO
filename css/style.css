@@ -1716,41 +1716,73 @@ form-container {
       background-color: #0056b3;
     }
 
-    /* ===== Estilos para búsqueda y orden de productos ===== */
-.busqueda-container {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+/* ===== Estilos generales ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #000;
 }
 
-.busqueda-container input {
-    padding: 8px;
-    font-size: 16px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.busqueda-container button {
-    padding: 8px 14px;
+.banner {
     background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 20px 0;
+    text-align: center;
 }
 
-.busqueda-container button:hover {
-    background-color: #003d80;
+.titulo-blanco {
+    color: #ffffff;
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
 }
 
+/* ===== Barra de búsqueda ===== */
+.busqueda-container {
+    margin: 20px 0;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center; /* alineación vertical */
+    flex-wrap: nowrap;
+}
+
+    .busqueda-container input {
+        padding: 10px 14px;
+        font-size: 16px;
+        width: 300px; /* barra más ancha */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        height: 36px; /* altura fija */
+    }
+
+    .busqueda-container button {
+        padding: 6px 0;
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        width: 80px; /* botones más pequeños */
+        height: 36px; /* igual altura que la barra */
+        line-height: 36px;
+        text-align: center;
+    }
+
+        .busqueda-container button:hover {
+            background-color: #003d80;
+        }
+
+/* ===== Cuadrícula de productos ===== */
 .productos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
     margin-top: 20px;
+    padding: 0 20px;
 }
 
 .producto {
@@ -1761,8 +1793,38 @@ form-container {
     background-color: #f9f9f9;
 }
 
-.producto h4 {
-    margin: 10px 0 5px;
-    font-size: 16px;
+    .producto img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .producto h4 {
+        margin: 10px 0 10px;
+        font-size: 16px;
+    }
+
+.btn-info {
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
+    .btn-info:hover {
+        background-color: #003d80;
+    }
+
+/* ===== Footer ===== */
+.footer-simple {
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 30px;
+}
