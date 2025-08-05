@@ -846,7 +846,7 @@ form .form-label {
 }
 
 /* =================== Seccion de banners =================== */
-/* Botones Ver M�s */
+/* Botones Ver Más */
 .btn-ver-mas {
     background-color: #007BFF;
     color: white;
@@ -877,10 +877,10 @@ form .form-label {
 }
 
 .banners-secundarios .banner-secundario {
-    height: 32%; /* Para que 3 banners ocupen 96% + gaps */
+    height: 32%;
 }
 
-/* Ajuste responsive b�sico */
+/* Ajuste responsive básico */
 @media (max-width: 768px) {
     .banners-principales {
         flex-direction: column;
@@ -928,8 +928,7 @@ form .form-label {
             object-fit: cover;
         }
 
-            /* Ocultar bot�n para carousel-1.jpg y carousel-2.png */
-            /* CAMBIO */
+            /* Ocultar botón para ciertas imágenes */
             #main-carousel .carousel-item img[src*="carousel-1.jpg"] ~ .btn,
             #main-carousel .carousel-item img[src*="carousel-2.png"] ~ .btn {
                 display: none !important;
@@ -965,7 +964,7 @@ form .form-label {
         object-fit: cover;
     }
 
-        /* CAMBIO: mover bot�n a la derecha solo en ciertas im�genes */
+        /* Mover botón a la derecha para ciertas imágenes */
         .banner-box img[src*="laptops.png"] ~ .btn,
         .banner-box img[src*="monitores.jpg"] ~ .btn,
         .banner-box img[src*="tablets.jpg"] ~ .btn {
@@ -973,7 +972,7 @@ form .form-label {
             right: 10px !important;
         }
 
-    /* Posici�n est�ndar del bot�n */
+    /* Posición estándar del botón */
     .banner-box .btn {
         position: absolute;
         bottom: 10px;
@@ -993,7 +992,7 @@ form .form-label {
     margin: 2rem 0;
 }
 
-/* Carousel */
+/* =================== BOTONES APARTADO NOVEDADES =================== */
 .carousel-container {
     position: relative;
     overflow: hidden;
@@ -1005,19 +1004,21 @@ form .form-label {
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease;
-    width: 200%;
+    width: 200%; /* 12 productos / 6 visibles = 2 páginas => 200% ancho */
 }
 
 .product-card {
-    flex: 0 0 calc(100% / 6);
+    flex: 0 0 calc(100% / 6); /* 6 productos visibles */
     text-align: center;
     padding: 1rem;
     box-sizing: border-box;
 }
 
+    /* 🔹 Imágenes Novedades aún más grandes */
     .product-card img {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        height: 320px; /* Más alto */
+        object-fit: cover;
         border-radius: 8px;
     }
 
@@ -1025,20 +1026,31 @@ form .form-label {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
-    padding: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 10;
+    transition: background-color 0.3s ease;
 }
 
+    .carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
     .carousel-btn.left {
-        left: 0;
+        left: 10px;
     }
 
     .carousel-btn.right {
-        right: 0;
+        right: 10px;
     }
 
 /* Banner */
@@ -1063,13 +1075,15 @@ form .form-label {
     text-align: center;
 }
 
+    /* 🔹 Imágenes Accesorios aún más grandes */
     .accesorio-item img {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        height: 280px; /* Más alto */
+        object-fit: cover;
         border-radius: 8px;
     }
 
-/* Carrusel RENDIMIENTO EXTREMO */
+/* =================== BOTONES CARRUSEL RENDIMIENTO EXTREMO =================== */
 .carrusel-extremo {
     width: 100%;
     overflow: hidden;
@@ -1097,24 +1111,34 @@ form .form-label {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 2rem;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
     color: white;
     border: none;
-    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 10;
+    transition: background-color 0.3s ease;
 }
 
+    .carrusel-btn:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
     .carrusel-btn.prev {
-        left: 20px;
+        left: 10px;
     }
 
     .carrusel-btn.next {
-        right: 20px;
+        right: 10px;
     }
 
-/* Categor�as */
+/* Categorías */
 .categorias {
     display: flex;
     justify-content: center;
@@ -1160,11 +1184,31 @@ form .form-label {
     height: 150px;
 }
 
+/* =================== MODIFICACIONES PARA BOTONES CARRUSEL PRINCIPAL =================== */
+#carouselMain .carousel-control-prev,
+#carouselMain .carousel-control-next {
+    width: 40px !important;
+    height: 40px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background-color: rgba(0, 123, 255, 0.7) !important;
+    border-radius: 50% !important;
+    opacity: 0.9 !important;
+}
 
+#carouselMain .carousel-control-prev-icon,
+#carouselMain .carousel-control-next-icon {
+    background-size: 70% 70% !important;
+}
 
+#carouselMain .carousel-control-prev {
+    left: 15px !important;
+}
 
-
-/* =================== M�DULO HU4: Soporte Flotante =================== */
+#carouselMain .carousel-control-next {
+    right: 15px !important;
+}
+/* =================== MÓDULO HU4: Soporte Flotante =================== */
 #soporte-flotante {
     position: fixed;
     bottom: 20px;
@@ -1222,6 +1266,7 @@ form .form-label {
         #soporte-cuadro .btn-abrir-chat:hover {
             background-color: #1ebe57;
         }
+
 
 /* =================== Chatbot Flotante =================== */
 #chatbot-flotante {
@@ -1504,7 +1549,7 @@ footer.banner {
 }
 
 /* ---------- Terminos y condiciones ---------- */
-/* Fondo blanco y texto negro por defecto */
+/* aqui Fondo blanco y texto negro por defecto */
 body {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -1671,4 +1716,53 @@ form-container {
       background-color: #0056b3;
     }
 
+    /* ===== Estilos para búsqueda y orden de productos ===== */
+.busqueda-container {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.busqueda-container input {
+    padding: 8px;
+    font-size: 16px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.busqueda-container button {
+    padding: 8px 14px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.busqueda-container button:hover {
+    background-color: #003d80;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.producto {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.producto h4 {
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
 
