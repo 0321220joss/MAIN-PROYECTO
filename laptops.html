@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="banner">
+        <h1 class="titulo-blanco">Catálogo de Productos</h1>
+    </header>
+
+    <!-- Controles de búsqueda y orden -->
+    <section class="busqueda-container">
+        <input type="text" id="buscarInput" placeholder="Buscar producto..." />
+        <button onclick="ordenarAZ()">A-Z</button>
+        <button onclick="ordenarZA()">Z-A</button>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="contenido">
+        <div class="productos" id="listaProductos">
+
+            <!-- Ejemplo de producto -->
+            <div class="producto">
+                <img src="img/foto1.jpg" alt="Laptop Lenovo 100e Chromebook 2nd Gen" />
+                <h4>Laptop Lenovo 100e Chromebook 2nd Gen</h4>
+                <a href="producto-LaptopLenovo.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/foto2.jpg" alt="Convertible Hyundai HyFlip" />
+                <h4>Convertible Hyundai HyFlip</h4>
+                <a href="producto-ConvertibleHyundai.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/foto3.jpg" alt="Laptop Dell Educativa Latitude 3190" />
+                <h4>Laptop Dell Educativa Latitude 3190</h4>
+                <a href="producto-Laptop.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/foto4.jpg" alt="Laptop ONN Surf, Intel Core" />
+                <h4>Laptop ONN Surf, Intel Core</h4>
+                <a href="producto-LaptopONN.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/foto5.jpg" alt="Laptop Toshiba Dynabook" />
+                <h4>Laptop Toshiba Dynabook</h4>
+                <a href="producto-LaptopToshiba.html" class="btn-info">Más información</a>
+            </div>
+
+            <div class="producto">
+                <img src="img/foto6.jpg" alt="Laptop HP x360 CTO Chromebook" />
+                <h4>Laptop HP x360 CTO Chromebook</h4>
+                <a href="producto-LaptopHP.html" class="btn-info">Más información</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-simple">
+        © 2025 Compuniverso. Todos los derechos reservados
+    </footer>
+
+    <!-- JS búsqueda y orden -->
+    <script>
+        const buscarInput = document.getElementById('buscarInput');
+        const listaProductos = document.getElementById('listaProductos');
+        let productos = Array.from(listaProductos.children);
+
+        buscarInput.addEventListener('keyup', () => {
+            const filtro = buscarInput.value.toLowerCase();
+            let coincidencias = 0;
+
+            productos.forEach(prod => {
+                const nombre = prod.textContent.toLowerCase();
+                if (nombre.includes(filtro)) {
+                    prod.style.display = '';
+                    coincidencias++;
+                } else {
+                    prod.style.display = 'none';
+                }
+            });
+
+            if (coincidencias === 0) {
+                if (!document.getElementById('mensajeNoEncontrado')) {
+                    const mensaje = document.createElement('p');
+                    mensaje.id = 'mensajeNoEncontrado';
+                    mensaje.textContent = 'No se encontraron productos';
+                    mensaje.style.textAlign = 'center';
+                    mensaje.style.fontWeight = 'bold';
+                    listaProductos.appendChild(mensaje);
+                }
+            } else {
+                const mensaje = document.getElementById('mensajeNoEncontrado');
+                if (mensaje) mensaje.remove();
+            }
+        });
+
+        function ordenarAZ() {
+            productos.sort((a, b) => a.textContent.localeCompare(b.textContent));
+            productos.forEach(p => listaProductos.appendChild(p));
+        }
+
+        function ordenarZA() {
+            productos.sort((a, b) => b.textContent.localeCompare(a.textContent));
+            productos.forEach(p => listaProductos.appendChild(p));
+        }
+    </script>
+</body>
+</html>
