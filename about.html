@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <title>Catálogo de Productos</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <!-- Encabezado -->
-    <header class="banner">
-        <h1 class="titulo-blanco">Catálogo de Productos</h1>
-    </header>
+    <header class="banner">Catálogo de Productos</header>
 
     <!-- Controles de búsqueda y orden -->
     <section class="busqueda-container">
@@ -18,100 +17,60 @@
         <button onclick="ordenarZA()">Z-A</button>
     </section>
 
-    <!-- Contenido principal -->
     <main class="contenido">
-        <div class="productos" id="listaProductos">
 
-            <!-- Ejemplo de producto -->
-            <div class="producto">
-                <img src="img/tarjeta-grafica-rtx3060.jpg" alt="Tarjeta Gráfica NVIDIA RTX 3060" />
-                <h4>Tarjeta Gráfica NVIDIA RTX 3060</h4>
-                <a href="producto-rtx3060.html" class="btn-info">Más información</a>
+        <!-- Barra lateral de filtros -->
+        <aside id="sidebarFiltros">
+            <h3>Selecciona Categoría</h3>
+            <div class="filtro-section active" id="filtroCategoria">
+                <label><input type="checkbox" name="categoria" value="procesadores"> Procesadores</label>
+                <label><input type="checkbox" name="categoria" value="tarjeta-madre"> Tarjeta Madre</label>
+                <label><input type="checkbox" name="categoria" value="memoria-ram"> Memoria RAM</label>
+                <label><input type="checkbox" name="categoria" value="tarjeta-video"> Tarjeta Video</label>
+                <label><input type="checkbox" name="categoria" value="almacenamiento"> Almacenamiento</label>
+                <label><input type="checkbox" name="categoria" value="enfriamiento"> Enfriamiento</label>
             </div>
 
-            <div class="producto">
-                <img src="img/procesador-ryzen5-5600x.jpg" alt="Procesador AMD Ryzen 5 5600X" />
-                <h4>Procesador AMD Ryzen 5 5600X</h4>
-                <a href="producto-ryzen5.html" class="btn-info">Más información</a>
+            <div class="filtro-section" id="filtroMarca"><h3>Marca</h3></div>
+            <div class="filtro-section" id="filtroSocket"><h3>Socket</h3></div>
+            <div class="filtro-section" id="filtroChipset"><h3>Chipset</h3></div>
+            <div class="filtro-section" id="filtroCapacidad"><h3>Capacidad / Formato / Núcleos</h3></div>
+
+            <button id="btnResetFiltros">Borrar filtros</button>
+        </aside>
+
+        <!-- Lista de productos -->
+        <section id="listaProductos">
+            <div class="producto" data-categoria="procesadores" data-marca="amd" data-socket="am4" data-capacidad="6 núcleos">
+                <img src="https://via.placeholder.com/300x180?text=Procesador+AMD+Ryzen+5" alt="Procesador AMD Ryzen 5" />
+                <h4>Procesador AMD Ryzen 5 5600X 6 Núcleos</h4>
+                <a href="producto-ryzen5.html" class="btn-info">Más info</a>
             </div>
 
-            <div class="producto">
-                <img src="img/memoria-ram-corsair-16gb.jpg" alt="Memoria RAM Corsair 16GB DDR4" />
-                <h4>Memoria RAM Corsair 16GB DDR4</h4>
-                <a href="producto-ram16.html" class="btn-info">Más información</a>
+            <div class="producto" data-categoria="procesadores" data-marca="intel" data-socket="1200" data-capacidad="4 núcleos">
+                <img src="https://via.placeholder.com/300x180?text=Procesador+Intel+Core+i5" alt="Procesador Intel Core i5" />
+                <h4>Procesador Intel Core i5-10400 4 Núcleos</h4>
+                <a href="producto-i5.html" class="btn-info">Más info</a>
             </div>
 
-            <div class="producto">
-                <img src="img/ssd-samsung-970evo-1tb.jpg" alt="SSD Samsung 970 EVO 1TB" />
-                <h4>SSD Samsung 970 EVO 1TB</h4>
-                <a href="producto-ssd1tb.html" class="btn-info">Más información</a>
+            <div class="producto" data-categoria="tarjeta-madre" data-marca="asus" data-socket="am4" data-chipset="b550" data-capacidad="micro-atx">
+                <img src="https://via.placeholder.com/300x180?text=Placa+Madre+ASUS+B550" alt="Placa Madre ASUS B550" />
+                <h4>Placa Madre ASUS B550 Micro-ATX</h4>
+                <a href="producto-b550.html" class="btn-info">Más info</a>
             </div>
 
-            <div class="producto">
-                <img src="img/placa-madre-asus-b550m.jpg" alt="Placa Madre ASUS B550M" />
-                <h4>Placa Madre ASUS B550M</h4>
-                <a href="producto-b550m.html" class="btn-info">Más información</a>
+            <div class="producto" data-categoria="memoria-ram" data-marca="corsair" data-chipset="ddr4" data-capacidad="16 gb">
+                <img src="https://via.placeholder.com/300x180?text=Memoria+Corsair+16GB" alt="Memoria RAM Corsair 16GB" />
+                <h4>Memoria RAM Corsair 16 GB DDR4</h4>
+                <a href="producto-ram16.html" class="btn-info">Más info</a>
             </div>
+        </section>
 
-            <div class="producto">
-                <img src="img/fuente-poder-evga-650w.jpg" alt="Fuente de Poder EVGA 650W" />
-                <h4>Fuente de Poder EVGA 650W</h4>
-                <a href="producto-fuente650w.html" class="btn-info">Más información</a>
-            </div>
-
-        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer-simple">
-        © 2025 Compuniverso. Todos los derechos reservados
-    </footer>
+    <!-- Pie de página -->
+    <footer>© 2025 Compuniverso. Todos los derechos reservados.</footer>
 
-    <!-- JS búsqueda y orden -->
-    <script>
-        const buscarInput = document.getElementById('buscarInput');
-        const listaProductos = document.getElementById('listaProductos');
-        let productos = Array.from(listaProductos.children);
-
-        buscarInput.addEventListener('keyup', () => {
-            const filtro = buscarInput.value.toLowerCase();
-            let coincidencias = 0;
-
-            productos.forEach(prod => {
-                const nombre = prod.textContent.toLowerCase();
-                if (nombre.includes(filtro)) {
-                    prod.style.display = '';
-                    coincidencias++;
-                } else {
-                    prod.style.display = 'none';
-                }
-            });
-
-            if (coincidencias === 0) {
-                if (!document.getElementById('mensajeNoEncontrado')) {
-                    const mensaje = document.createElement('p');
-                    mensaje.id = 'mensajeNoEncontrado';
-                    mensaje.textContent = 'No se encontraron productos';
-                    mensaje.style.textAlign = 'center';
-                    mensaje.style.fontWeight = 'bold';
-                    listaProductos.appendChild(mensaje);
-                }
-            } else {
-                const mensaje = document.getElementById('mensajeNoEncontrado');
-                if (mensaje) mensaje.remove();
-            }
-        });
-
-        function ordenarAZ() {
-            productos.sort((a, b) => a.textContent.localeCompare(b.textContent));
-            productos.forEach(p => listaProductos.appendChild(p));
-        }
-
-        function ordenarZA() {
-            productos.sort((a, b) => b.textContent.localeCompare(a.textContent));
-            productos.forEach(p => listaProductos.appendChild(p));
-        }
-    </script>
+    <script src="js/filtro.js"></script>
 </body>
 </html>
-
