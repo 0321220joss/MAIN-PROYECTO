@@ -77,6 +77,10 @@
         <div class="h-100 d-flex align-items-center justify-content-center mt-4">
             <button type="button" class="btn btn-success" id="ButonCompletar">Ajustar</button>
         </div>
+
+        <div class="h-100 d-flex align-items-center justify-content-center mt-4">
+            <button type="button" class="btn btn-secondary" id="ButonNotificacion">Envia Notificacion</button>
+        </div>
     </div>
 
     <!-- Script para lógica de trazabilidad -->
@@ -116,6 +120,7 @@
             document.getElementById("selectorServicio").style.display = "block";
             document.getElementById("ListaUsuarios").style.display = "block";
             document.getElementById("ButonCompletar").style.display = "block";
+            document.getElementById("ButonNotificacion").style.display = "none";
             actualizarEstadoVisual(parseInt(estadoGuardado));
 
             select.addEventListener("change", function () {
@@ -128,6 +133,7 @@
             document.getElementById("selectorServicio").style.display = "none";
             document.getElementById("ListaUsuarios").style.display = "none";
             document.getElementById("ButonCompletar").style.display = "none";
+            document.getElementById("ButonNotificacion").style.display = "block";
             actualizarEstadoVisual(parseInt(1));
         }
 
