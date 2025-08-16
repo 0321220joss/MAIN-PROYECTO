@@ -20,7 +20,14 @@
     <link href="css/formulario-cita.css" rel="stylesheet" />
 
 </head>
-<body>
+<body style ="
+    background-image: url('img/Tecnoimg.PNG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(255,255,255,0.7);
+    background-blend-mode: lighten;
+">
     <!-- Topbar -->
     <div class="container-fluid bg-primary text-white d-none d-lg-flex">
         <div class="container py-3">
@@ -126,6 +133,21 @@
                 const fila = document.createElement("tr");
 
                 fila.innerHTML = `
+<<<<<<< HEAD
+                                            <td>${cita.nombre}</td>
+                                            <td>${cita.correo}</td>
+                                            <td>${cita.telefono}</td>
+                                            <td>${cita.fecha}</td>
+                                            <td>${cita.hora}</td>
+                                            <td>${cita.servicio}</td>
+                                            <td>${cita.comentarios}</td>
+                                            <td>
+                                                <button class="btn btn-danger btn-sm" onclick="eliminarCita(${index})">
+                                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                                </button>
+                                            </td>
+                                        `;
+=======
                         <td>${cita.nombre}</td>
                         <td>${cita.correo}</td>
                         <td>${cita.telefono}</td>
@@ -139,6 +161,7 @@
                             </button>
                         </td>
                     `;
+>>>>>>> f7164d040bf31da41d01940316c1df3b84c19882
 
                 tbody.appendChild(fila);
             });
@@ -195,5 +218,5 @@
     <footer class="footer-simple">
         © 2025 Compuniverso. Todos los derechos reservados.
     </footer>
-</body>
+    </body>
 </html>

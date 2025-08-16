@@ -8,10 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-
-
 </head>
-<body>
+<body style="
+    background-image: url('img/Tecnoimg.PNG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(255,255,255,0.7);
+    background-blend-mode: darken;
+">
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -21,7 +27,6 @@
                     <i class="bi bi-person-circle me-2"></i>Perfil
                 </a>
                 <a href="historial.html"><i class="bi bi-clock-history me-2"></i>Historial de servicios</a>
-
                 <a href="trazabilidad.html" id="mostrarTrazabilidad">
                     <i class="bi bi-graph-up-arrow me-2"></i>Trazabilidad
                 </a>
@@ -32,50 +37,62 @@
                 </a>
             </div>
 
-
             <!-- Contenido principal -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
-                <div id="seccionPerfil">
-                    <div class="perfil-formulario mx-auto mt-4 p-4 shadow rounded bg-white" style="max-width: 600px;">
-                        <h2 class="mb-4 text-center">Perfil del Cliente</h2>
-                        <form id="formPerfil">
-                            <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" required />
-                            </div>
-                            <div class="mb-3">
-                                <label for="correo" class="form-label">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="correo" required />
-                            </div>
-                            <div class="mb-3">
-                                <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" id="telefono" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" />
-                            </div>
-                            <h4 class="text-center" style="font-size: 15px;">Contraseña</h4>
-                            <div class="mb-3">
-                                <label for="contra" class="form-label">Ingrese contraseña actual</label>
-                                <input type="text" class="form-control" id="contraseña" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="contraN" class="form-label">Ingrese contraseña nueva</label>
-                                <input type="text" class="form-control" id="contraseñan" />
-                            </div>
+                <div class="row g-4 mt-4">
 
-                            <div class="d-flex justify-content-between mt-4">
-                                <button type="submit" class="btn btn-success w-50 me-2">Guardar Cambios</button>
-                                <button type="button" class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion">
-                                    Eliminar Cuenta
-                                </button>
-                            </div>
-                        </form>
+                    <!-- Card: Editar Perfil -->
+                    <div class="col-md-6">
+                        <div class="perfil-formulario p-4 shadow rounded bg-white h-100">
+                            <h2 class="mb-4 text-center">Editar Perfil del Usuario</h2>
+                            <form id="formPerfil">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="correo" class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="correo" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="text" class="form-control" id="telefono" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="direccion" class="form-label">Dirección</label>
+                                    <input type="text" class="form-control" id="direccion" />
+                                </div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="submit" class="btn btn-success w-50 me-2">Guardar Cambios</button>
+                                    <button type="button" class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#confirmarEliminacion">
+                                        Eliminar Cuenta
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    </div>
-                    
 
+                    <!-- Card: Editar Contraseña -->
+                    <div class="col-md-6">
+                        <div class="perfil-formulario p-4 shadow rounded bg-white h-90">
+                            <h2 class="mb-4 text-center">Editar Contraseña del Usuario</h2>
+                            <form id="formContraseña">
+                                <div class="mb-3">
+                                    <label for="contraseña" class="form-label">Ingrese contraseña actual</label>
+                                    <input type="password" class="form-control" id="contraseña" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contraseñan" class="form-label">Ingrese contraseña nueva</label>
+                                    <input type="password" class="form-control" id="contraseñan" />
+                                </div>
+                                <div class="d-flex justify-content-center mt-4">
+                                    <button type="submit" class="btn btn-success w-50">Guardar Cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </main>
         </div>
     </div>
@@ -98,8 +115,11 @@
             </div>
         </div>
     </div>
-    
 
+    <!-- Footer -->
+    <div class="container-fluid footer-simple">
+        © 2025 Compuniverso. Todos los derechos reservados.
+    </div>
 
 
     <!-- Scripts de Bootstrap + lógica -->
@@ -149,8 +169,6 @@
             alert("Tu cuenta ha sido eliminada.");
             window.location.href = "login.html";
         });
-
-
     </script>
 </body>
 </html>

@@ -9,7 +9,15 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
-<body>
+<body style="
+    background-image: url('img/Tecnoimg.PNG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(255,255,255,0.7);
+    background-blend-mode: lighten;
+">
+
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -83,6 +91,12 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <div class="container-fluid footer-simple">
+        © 2025 Compuniverso. Todos los derechos reservados.
+    </div>
+
+
     <!-- Script para lógica de trazabilidad -->
     <script>
         const usuarioActivo = JSON.parse(localStorage.getItem('usuarioActivo'));
@@ -127,7 +141,7 @@
                 const nuevoEstado = parseInt(this.value);
                 localStorage.setItem(estadoKey, nuevoEstado);
                 actualizarEstadoVisual(nuevoEstado);
-        });
+            });
         } else {
             document.getElementById("selectorEstado").style.display = "none";
             document.getElementById("selectorServicio").style.display = "none";

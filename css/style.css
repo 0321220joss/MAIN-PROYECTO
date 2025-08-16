@@ -1935,10 +1935,10 @@ main.contenido {
 #sidebarFiltros {
     position: sticky;
     top: 20px;
-    background: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px 20px 25px 20px; /* padding uniforme y generoso */
+    background: transparent; /* Antes era #f9f9f9 */
+    border: none;            /* Opcional: quitar borde */
+    border-radius: 0;        /* Opcional: quitar redondeo */
+    padding: 0;              /* Reducir padding si quieres */
     width: 260px;
     flex-shrink: 0;
     height: fit-content;
@@ -1946,6 +1946,7 @@ main.contenido {
     margin-left: 0;
     box-sizing: border-box;
 }
+
 
 body > main.contenido {
     margin-left: 0;
@@ -2105,7 +2106,22 @@ footer {
     color: white;
     text-align: center;
     padding: 15px 0;
-    margin-top: 30px;
+    margin-top: 80px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.footer-simple {
+    background-color: #0056b3; /* color de fondo */
+    color: white; /* color del texto */
+    text-align: center; /* centra el texto */
+    padding: 15px 0; /* espacio arriba y abajo */
+    position: fixed; /* fijo en la pantalla */
+    bottom: 0; /* siempre abajo */
+    width: 100%; /* ocupa todo el ancho */
+    z-index: 999; /* encima de otros elementos */
 }
 
 /* Estructura básica */

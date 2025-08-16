@@ -35,8 +35,15 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
+<body style="
+    background-image: url('img/Tecnoimg.PNG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(255,255,255,0.7);
+    background-blend-mode: darken;
 
-<body>
+">
     <!-- Redirección si no hay sesión activa -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -106,32 +113,20 @@
     </div>
 
 
-    <!-- Cabecera de Página -->
-     <div class="imagen-responsive">
-  <img src="img/service-1.png" alt="Descripción de la imagen">
-</div>
-    
-        <div class="container text-center py-5">
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                    <li class="breadcrumb-item text-primary" aria-current="page">Servicios</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+
 
     <!-- Filtro de Servicios -->
-    <div class="container mb-5">
-        <h2 class="mb-4 fw-bold">Catálogo de Servicios de Mantenimiento</h2>
+    <div class="container mb-5" style="margin-top: 50px;">
+
         <div class="filtro-container mb-4">
+            <h2 class="mb-4 fw-bold" style="font-size: 1.5rem;">Catálogo de Servicios de Mantenimiento</h2>
+
             <label for="categoria" class="form-label"><strong>Filtrar por categoría:</strong></label>
             <select id="categoria" class="form-select w-auto">
                 <option value="todos">Todas las categorías</option>
                 <option value="Limpieza">Limpieza</option>
                 <option value="Reparación">Reparación</option>
                 <option value="Instalación">Instalación</option>
-
             </select>
         </div>
 
@@ -157,10 +152,10 @@
 
     <!-- Footer -->
     <div class="container-fluid footer-simple">
-    © 2025 Compuniverso. Todos los derechos reservados.
-</div>
+        © 2025 Compuniverso. Todos los derechos reservados.
+    </div>
 
-   
+
 
     <!-- Botón Subir -->
     <a href="#" class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-circle shadow" style="z-index: 999;">
@@ -193,6 +188,6 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
     <script src="js/main.js"></script>
 
-</body>
+    </>
 
 </html>
